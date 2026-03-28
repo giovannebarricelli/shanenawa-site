@@ -11,13 +11,13 @@ export default function Home() {
     offset: ["start start", "end end"]
   });
 
-  // Efeitos de animação baseados no scroll
+  // Efeitos de animação baseados no scroll (Padrão Godly)
   const titleScale = useTransform(scrollYProgress, [0, 0.2], [1, 1.2]);
   const titleOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const keneRotate = useTransform(scrollYProgress, [0, 1], [0, 45]);
 
   return (
-    <main ref={containerRef} className="bg-[#050a05] text-[#fdfcf0] selection:bg-[#4ade80] selection:text-black font-sans">
+    <main ref={containerRef} className="bg-[#050a05] text-[#fdfcf0] selection:bg-[#4ade80] selection:text-black font-sans min-h-screen">
       
       {/* SEÇÃO 1: O MANIFESTO (Abertura Impactante) */}
       <section className="h-screen flex flex-col items-center justify-center sticky top-0 overflow-hidden px-6">
@@ -25,10 +25,10 @@ export default function Home() {
           style={{ scale: titleScale, opacity: titleOpacity }}
           className="z-10 text-center"
         >
-          <h2 className="text-[10px] md:text-xs uppercase tracking-[0.8em] mb-6 text-[#4ade80] font-bold">Tecnologia Ancestral</h2>
-          <h1 className="text-5xl md:text-8xl font-black tracking-tighter leading-none italic">
-            NÃO É A ROUPA.<br/>
-            <span className="text-white">É O KENE.</span>
+          <h2 className="text-[10px] md:text-xs uppercase tracking-[0.8em] mb-6 text-[#4ade80] font-bold tracking-widest">Tecnologia Ancestral</h2>
+          <h1 className="text-5xl md:text-8xl font-black tracking-tighter leading-none italic uppercase">
+            Não é a roupa.<br/>
+            <span className="text-white">É o Kene.</span>
           </h1>
           <p className="mt-8 opacity-40 text-sm tracking-widest uppercase">Desça para decodificar</p>
         </motion.div>
@@ -50,6 +50,7 @@ export default function Home() {
           <motion.div 
             initial={{ opacity: 0, y: 100 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="group relative border border-[#4ade80]/10 p-10 rounded-[2.5rem] bg-gradient-to-b from-white/5 to-transparent backdrop-blur-md"
           >
@@ -60,7 +61,7 @@ export default function Home() {
             <p className="text-lg text-[#fdfcf0]/70 leading-relaxed mb-8">
               O Kene não é enfeite. É o selo de integridade. Uma bolsa gravada protege a essência do que você carrega, bloqueando frequências externas.
             </p>
-            <div className="aspect-square bg-black/40 rounded-2xl border border-[#4ade80]/20 flex items-center justify-center group-hover:border-[#4ade80]/50 transition-all">
+            <div className="aspect-square bg-black/40 rounded-2xl border border-[#4ade80]/20 flex items-center justify-center group-hover:border-[#4ade80]/50 transition-all overflow-hidden">
                <span className="text-[#4ade80]/10 text-9xl font-black">K</span>
             </div>
           </motion.div>
@@ -69,6 +70,7 @@ export default function Home() {
           <motion.div 
             initial={{ opacity: 0, y: 100 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="group relative border border-[#4ade80]/10 p-10 rounded-[2.5rem] bg-gradient-to-b from-white/5 to-transparent backdrop-blur-md md:mt-40"
           >
@@ -79,7 +81,7 @@ export default function Home() {
             <p className="text-lg text-[#fdfcf0]/70 leading-relaxed mb-8">
               Ao vestir o grafismo sagrado, você altera seu código interno. O Kene de visão sintoniza sua mente com a frequência do Pássaro Azul.
             </p>
-            <div className="aspect-square bg-black/40 rounded-2xl border border-[#4ade80]/20 flex items-center justify-center group-hover:border-[#4ade80]/50 transition-all">
+            <div className="aspect-square bg-black/40 rounded-2xl border border-[#4ade80]/20 flex items-center justify-center group-hover:border-[#4ade80]/50 transition-all overflow-hidden">
                <span className="text-[#4ade80]/10 text-9xl font-black">N</span>
             </div>
           </motion.div>
@@ -89,16 +91,16 @@ export default function Home() {
 
       {/* RODAPÉ CULTURAL */}
       <footer className="mt-40 py-20 border-t border-[#4ade80]/10 text-center">
-        <p className="text-[10px] tracking-[1em] uppercase opacity-40">
+        <p className="text-[10px] tracking-[1em] uppercase opacity-40 px-4">
           Fortalecendo a autonomia da Aldeia Shanenawa • 2026
         </p>
-      </footer}
+      </footer>
 
       {/* BOTÃO WHATSAPP (Ação Root) */}
       <motion.a
         whileHover={{ scale: 1.1, rotate: 5 }}
         whileTap={{ scale: 0.9 }}
-        href="https://wa.me/55SEUNUMERO" // Troque pelo seu número
+        href="https://wa.me/55SEUNUMERO" 
         className="fixed bottom-10 right-10 z-50 bg-[#25d366] p-5 rounded-full shadow-[0_0_30px_rgba(37,211,102,0.3)]"
       >
         <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
