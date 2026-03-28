@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #fdfcf0; /* Tom de papel antigo/palha */
+  --foreground: #1a2e12; /* Verde floresta profundo */
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
