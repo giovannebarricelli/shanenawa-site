@@ -3,11 +3,50 @@
 @tailwind utilities;
 
 :root {
-  --background: #fdfcf0; /* Tom de papel antigo/palha */
-  --foreground: #1a2e12; /* Verde floresta profundo */
+  --cyan-neon: #00f2ff;
+  --deep-black: #050505;
+  --metal-shine: linear-gradient(180deg, #ffffff 0%, #00f2ff 50%, #1a2a3a 100%);
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: var(--deep-black);
+  color: #fff;
+  overflow-x: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+/* --- EFEITO 1: O TEXTO METÁLICO (SHANENAWA) --- */
+.shane-title {
+  background: var(--metal-shine);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 15px rgba(0, 242, 255, 0.4));
+  font-weight: 900;
+  letter-spacing: -0.05em;
+}
+
+/* --- EFEITO 2: O VIDRO DO TOTEM (GLASSMORPHISM) --- */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(25px) saturate(150%);
+  border: 1px solid rgba(0, 242, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+  border-radius: 40px;
+}
+
+/* --- EFEITO 3: A SOMBRA DA PENA (PROFUNDIDADE 3D) --- */
+.feather-layer {
+  filter: drop-shadow(0 25px 35px rgba(0, 0, 0, 0.9));
+  transition: transform 0.3s ease;
+}
+
+/* --- EFEITO 4: O GLOW DE FUNDO (AURA DA ARARA) --- */
+.bg-glow {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(0, 242, 255, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
 }
