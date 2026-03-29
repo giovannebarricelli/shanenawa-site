@@ -4,7 +4,8 @@
 
 :root {
   --neon-cyan: #00f2ff;
-  --deep-black: #050505; /* O vazio absoluto */
+  --star-white: rgba(255, 255, 255, 0.9);
+  --deep-black: #050505;
 }
 
 html, body {
@@ -14,40 +15,97 @@ html, body {
   scroll-behavior: smooth;
   background-color: var(--deep-black); /* Começa no preto total */
   color: #ffffff;
-  font-family: 'JetBrains Mono', monospace; /* Fonte Hacker para a história */
+  font-family: 'serif'; /* Fonte elegante para a homenagem */
 }
 
-/* --- O CÉU ESTRELADO PISCANTE DA AMAZÔNIA (CSS PURO LEVE) --- */
-.sky-stars-blink {
+/* --- O CÉU ESTRELADO DE ALTA INTENSIDADE (CSS PURO) --- */
+.sky-container-full {
   background-color: var(--deep-black);
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+  overflow: hidden;
   z-index: 0;
-  
-  /* Gerador de micro-estrelas com box-shadow (Alta performance para 4GB) */
+}
+
+/* --- CAMADA 1: FUNDO PROFUNDO (FIXAS E PEQUENAS) --- */
+.stars-back {
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  /* Centenas de micro-estrelas com box-shadow (Leve e Brilhante) */
   box-shadow: 
-    100px 100px var(--neon-cyan), 300px 200px var(--neon-cyan), 500px 150px var(--neon-cyan),
-    700px 300px var(--neon-cyan), 900px 100px var(--neon-cyan), 200px 400px var(--neon-cyan),
-    400px 500px var(--neon-cyan), 600px 450px var(--neon-cyan), 800px 600px var(--neon-cyan),
-    1000px 550px var(--neon-cyan), 150px 700px var(--neon-cyan), 350px 750px var(--neon-cyan),
-    550px 700px var(--neon-cyan), 750px 800px var(--neon-cyan), 950px 750px var(--neon-cyan),
-    /* Pontos menores e mais fracos para profundidade */
-    120px 120px rgba(0, 242, 255, 0.4), 320px 220px rgba(0, 242, 255, 0.4), 
-    520px 170px rgba(0, 242, 255, 0.4), 720px 320px rgba(0, 242, 255, 0.4),
-    920px 120px rgba(0, 242, 255, 0.4), 220px 420px rgba(0, 242, 255, 0.4);
-  
-  /* A Animação do brilho piscar */
-  animation: starsBlink 8s infinite ease-in-out;
+    345px 789px var(--star-white), 123px 456px var(--neon-cyan), 567px 890px var(--star-white), 
+    901px 234px var(--star-white), 432px 109px var(--star-white), 654px 321px var(--star-white),
+    /*...adicionei muitas... exemplos de posição em VW/VH */
+    10vw 20vh var(--star-white), 30vw 10vh var(--star-white), 50vw 30vh var(--star-white),
+    70vw 15vh var(--neon-cyan), 90vw 25vh var(--star-white), 15vw 45vh var(--star-white),
+    35vw 55vh var(--star-white), 55vw 40vh var(--star-white), 75vw 60vh var(--star-white),
+    95vw 50vh var(--star-white), 20vw 70vh var(--star-white), 40vw 80vh var(--star-white);
 }
 
-@keyframes starsBlink {
-  0%, 100% { opacity: 0.2; }
-  50% { opacity: 1; }
+/* --- CAMADA 2: O MEIO (PISCANTE LENTO) --- */
+.stars-mid {
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: 
+    200px 300px var(--star-white), 400px 500px var(--neon-cyan), 600px 700px var(--star-white), 
+    800px 900px var(--star-white), 1000px 100px var(--neon-cyan), 150px 250px var(--star-white),
+    /*...posições... */
+    12vw 18vh var(--star-white), 32vw 8vh var(--star-white), 52vw 28vh var(--star-white),
+    72vw 12vh var(--star-white), 92vw 22vh var(--star-white);
+  animation: starsBlinkSlow 6s infinite ease-in-out;
 }
 
-/* --- O "DESIGNER DA LETRA" CHIQUE E BRILHOSO --- */
+/* --- CAMADA 3: FRENTE (BRILHANTES E RÁPIDAS) --- */
+.stars-front {
+  width: 3px;
+  height: 3px;
+  background: transparent;
+  filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.4)); /* Brilho Neon */
+  box-shadow: 
+    10vw 70vh var(--star-white), 30vw 90vh var(--neon-cyan), 50vw 80vh var(--star-white),
+    70vw 75vh var(--star-white), 90vw 85vh var(--neon-cyan), 15vw 95vh var(--star-white);
+  animation: starsBlinkFast 3s infinite ease-in-out;
+}
+
+@keyframes starsBlinkSlow {
+  0%, 100% { opacity: 0.1; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+@keyframes starsBlinkFast {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.5); }
+}
+
+/* --- ESTRELA CADENTE --- */
+.shooting-star {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 2px;
+  background: linear-gradient(-45deg, #ffffff, rgba(0, 242, 255, 0));
+  border-radius: 999px;
+  filter: drop-shadow(0 0 6px #699bff);
+  animation: tail 3000ms ease-in-out infinite, shooting 3000ms ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes tail {
+  0% { width: 0; }
+  30% { width: 100px; }
+  100% { width: 0; }
+}
+
+@keyframes shooting {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(300px); }
+}
+
+/* --- DESIGNER DA LETRA CHIQUE E BRILHOSA --- */
 .txana-brand-elite {
   font-family: 'serif'; /* Algo mais clássico e ancestral */
   font-weight: 100; /* Extra fina */
@@ -57,11 +115,11 @@ html, body {
   /* O ESPAÇAMENTO "CHIQUE" */
   letter-spacing: 0.8em; 
   
-  /* O BRILHO (AURA NEON NEON CYAN) */
-  filter: drop-shadow(0 0 15px rgba(0, 242, 255, 0.5));
+  /* O BRILHO (AURA BRANCA ETÉREA) */
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.6));
   
   /* Gradiente místico adaptativo (Branco puro -> Metal Líquido) */
-  background: linear-gradient(-45deg, #ffffff, var(--neon-cyan), #aab4b0, var(--neon-cyan), #ffffff);
+  background: linear-gradient(-45deg, #ffffff, #aab4b0, #ffffff, #aab4b0, #ffffff);
   background-size: 400% 400%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -74,20 +132,27 @@ html, body {
   100% { background-position: 0% 50%; }
 }
 
-/* --- MOLDURA DE CÂMERA DIGITAL / FOCUS (FILTRO GLASS) --- */
+/* --- MOLDURA DE CÂMERA DE CINEMA (GLASS MORPHISM) --- */
 .camera-focus-frame {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   pointer-events: none; /* Não atrapalha o click */
-  border-radius: 40px; /* Círculo/Painel de Vidro nos cantos */
-  background: radial-gradient(circle at center, transparent 30%, rgba(5, 5, 5, 0.6) 80%);
   border: 1px solid rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(1px); /* Efeito de lente */
+  z-index: 2;
 }
 
-/* O símbolo de REC piscante */
+/* Símbolos de Câmera SVG minimalistas */
+.cam-icon {
+  width: 16px;
+  height: 16px;
+  opacity: 0.1;
+  fill: #ffffff;
+}
+
+/* Ponto de REC piscante */
 .rec-ponto {
   width: 8px;
   height: 8px;

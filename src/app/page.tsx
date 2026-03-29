@@ -5,18 +5,37 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#050505]">
       
-      {/* 🌑 SEÇÃO DE HOMENAGEM: CANTO DO TXÁNA (O CÉU ESTRELADO) */}
+      {/* 🛡️ HEADER TERM (SEM GRADE, SÓ O NOME) */}
+      <header className="fixed top-0 w-full z-50 bg-black/40 backdrop-blur-md border-b border-white/5 py-4 px-8 vazio-section">
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <h1 className="text-[#00f2ff] font-black italic text-xl">
+            Shanenawa_Txai
+          </h1>
+          <nav className="flex gap-8 opacity-60">
+            <span className="hover:text-[#00f2ff] cursor-pointer">/Rituals</span>
+            <span className="hover:text-[#00f2ff] cursor-pointer">/FlowZap</span>
+          </nav>
+        </div>
+      </header>
+
+      {/* 🌑 SEÇÃO DE HOMENAGEM: CANTO DO TXÁNA (O CÉU SAGRADO) */}
       <section className="h-screen w-full flex items-center justify-center p-10 text-center relative overflow-hidden vazio-container">
         
-        {/* 1. O CÉU ESTRELADO PISCANTE NO FUNDO */}
-        <div className="sky-stars-blink"></div>
+        {/* 1. O CÉU ESTRELADO DE ALTA INTENSIDADE (SHOW DE CÉU) */}
+        <div className="sky-container-full">
+          <div className="stars-back"></div>
+          <div className="stars-mid"></div>
+          <div className="stars-front"></div>
+          {/* Estrelas Cadentes em posições diferentes */}
+          <div className="shooting-star" style={{ top: '10%', left: '20%', animationDelay: '0s' }}></div>
+          <div className="shooting-star" style={{ top: '30%', left: '60%', animationDelay: '5s' }}></div>
+          <div className="shooting-star" style={{ top: '50%', left: '10%', animationDelay: '2s' }}></div>
+        </div>
 
-        {/* 2. A MOLDURA DE CÂMERA DIGITAL / FOCO (GLASS) */}
+        {/* 2. A MOLDURA DE CÂMERA DE CINEMA / FOCUS (GLASS) */}
         <div className="camera-focus-frame">
-          {/* Ponto de REC piscante */}
           <div className="rec-ponto"></div>
-          
-          {/* Símbolos de Câmera nos cantos (SVG Minimalista) */}
+          {/* Texto minimalista da câmera */}
           <div className="absolute top-8 left-8 text-white/10 font-mono text-[9px] tracking-widest">
             {`[REC]`}
           </div>
@@ -33,8 +52,8 @@ export default function Home() {
 
         {/* 3. O TEXTO PRINCIPAL (Homenagem Massiva) */}
         <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{ opacity: 0, scale: 0.98 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 4, ease: "easeOut" }}
           className="z-10"
         >
@@ -54,8 +73,8 @@ export default function Home() {
           </div>
         </motion.div>
 
-        {/* Efeito de luz ambiente de nebuloza no centro (sutil para 4GB) */}
-        <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,242,255,0.02),transparent_70%)]" />
+        {/* Efeito de luz ambiente muito sutil para não pesar nos 4GB de RAM */}
+        <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.02),transparent_70%)]" />
       </section>
 
       {/* FOOTER TERM */}
