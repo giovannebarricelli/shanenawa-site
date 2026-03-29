@@ -3,168 +3,67 @@
 @tailwind utilities;
 
 :root {
-  --neon-cyan: #00f2ff;
-  --star-white: rgba(255, 255, 255, 0.9);
+  --emerald-glass: rgba(0, 77, 64, 0.4);
   --deep-black: #050505;
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  background-color: var(--deep-black); /* Começa no preto total */
-  color: #ffffff;
-  font-family: 'serif'; /* Fonte elegante para a homenagem */
-}
-
-/* --- O CÉU ESTRELADO DE ALTA INTENSIDADE (CSS PURO) --- */
-.sky-container-full {
-  background-color: var(--deep-black);
+/* --- UNIVERSO DE PARTÍCULAS (ALTA PERFORMANCE) --- */
+.cosmic-void {
+  background: radial-gradient(circle at center, #0a0a0a 0%, var(--deep-black) 100%);
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
   overflow: hidden;
-  z-index: 0;
 }
 
-/* --- CAMADA 1: FUNDO PROFUNDO (FIXAS E PEQUENAS) --- */
-.stars-back {
-  width: 1px;
-  height: 1px;
-  background: transparent;
-  /* Centenas de micro-estrelas com box-shadow (Leve e Brilhante) */
+.particle-stars {
+  width: 1.5px;
+  height: 1.5px;
+  background: white;
+  border-radius: 50%;
   box-shadow: 
-    345px 789px var(--star-white), 123px 456px var(--neon-cyan), 567px 890px var(--star-white), 
-    901px 234px var(--star-white), 432px 109px var(--star-white), 654px 321px var(--star-white),
-    /*...adicionei muitas... exemplos de posição em VW/VH */
-    10vw 20vh var(--star-white), 30vw 10vh var(--star-white), 50vw 30vh var(--star-white),
-    70vw 15vh var(--neon-cyan), 90vw 25vh var(--star-white), 15vw 45vh var(--star-white),
-    35vw 55vh var(--star-white), 55vw 40vh var(--star-white), 75vw 60vh var(--star-white),
-    95vw 50vh var(--star-white), 20vw 70vh var(--star-white), 40vw 80vh var(--star-white);
+    25vw 10vh 2px #fff, 75vw 20vh 3px #00f2ff, 45vw 55vh 4px #fff,
+    10vw 80vh 2px #00f2ff, 90vw 90vh 3px #fff, 60vw 15vh 4px #fff;
+  animation: shimmer 5s infinite ease-in-out;
+  filter: drop-shadow(0 0 5px white);
 }
 
-/* --- CAMADA 2: O MEIO (PISCANTE LENTO) --- */
-.stars-mid {
-  width: 2px;
-  height: 2px;
-  background: transparent;
-  box-shadow: 
-    200px 300px var(--star-white), 400px 500px var(--neon-cyan), 600px 700px var(--star-white), 
-    800px 900px var(--star-white), 1000px 100px var(--neon-cyan), 150px 250px var(--star-white),
-    /*...posições... */
-    12vw 18vh var(--star-white), 32vw 8vh var(--star-white), 52vw 28vh var(--star-white),
-    72vw 12vh var(--star-white), 92vw 22vh var(--star-white);
-  animation: starsBlinkSlow 6s infinite ease-in-out;
-}
-
-/* --- CAMADA 3: FRENTE (BRILHANTES E RÁPIDAS) --- */
-.stars-front {
-  width: 3px;
-  height: 3px;
-  background: transparent;
-  filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.4)); /* Brilho Neon */
-  box-shadow: 
-    10vw 70vh var(--star-white), 30vw 90vh var(--neon-cyan), 50vw 80vh var(--star-white),
-    70vw 75vh var(--star-white), 90vw 85vh var(--neon-cyan), 15vw 95vh var(--star-white);
-  animation: starsBlinkFast 3s infinite ease-in-out;
-}
-
-@keyframes starsBlinkSlow {
-  0%, 100% { opacity: 0.1; transform: scale(0.9); }
-  50% { opacity: 1; transform: scale(1.1); }
-}
-
-@keyframes starsBlinkFast {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
+@keyframes shimmer {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
   50% { opacity: 1; transform: scale(1.5); }
 }
 
-/* --- ESTRELA CADENTE --- */
-.shooting-star {
+/* --- ESTRELA CADENTE ÚNICA HORIZONTAL --- */
+.lone-cadente {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  height: 2px;
-  background: linear-gradient(-45deg, #ffffff, rgba(0, 242, 255, 0));
-  border-radius: 999px;
-  filter: drop-shadow(0 0 6px #699bff);
-  animation: tail 3000ms ease-in-out infinite, shooting 3000ms ease-in-out infinite;
-  z-index: 1;
+  top: 25%;
+  left: -200px;
+  width: 150px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #fff, transparent);
+  animation: slideAcross 15s infinite linear;
 }
 
-@keyframes tail {
-  0% { width: 0; }
-  30% { width: 100px; }
-  100% { width: 0; }
+@keyframes slideAcross {
+  0% { left: -200px; opacity: 0; }
+  5% { opacity: 1; }
+  20% { left: 120vw; opacity: 0; }
+  100% { left: 120vw; opacity: 0; }
 }
 
-@keyframes shooting {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(300px); }
-}
-
-/* --- DESIGNER DA LETRA CHIQUE E BRILHOSA --- */
-.txana-brand-elite {
-  font-family: 'serif'; /* Algo mais clássico e ancestral */
-  font-weight: 100; /* Extra fina */
+/* --- CANTO DO TXÁNA: METALIZADO ESMERALDA --- */
+.txana-emerald-metal {
+  font-family: 'serif';
   text-transform: uppercase;
-  color: #ffffff;
-  
-  /* O ESPAÇAMENTO "CHIQUE" */
-  letter-spacing: 0.8em; 
-  
-  /* O BRILHO (AURA BRANCA ETÉREA) */
-  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.6));
-  
-  /* Gradiente místico adaptativo (Branco puro -> Metal Líquido) */
-  background: linear-gradient(-45deg, #ffffff, #aab4b0, #ffffff, #aab4b0, #ffffff);
-  background-size: 400% 400%;
+  letter-spacing: 1em;
+  /* Gradiente Metalizado */
+  background: linear-gradient(135deg, #e0e0e0 0%, #004d40 45%, #ffffff 50%, #004d40 55%, #e0e0e0 100%);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: metalFlow 8s ease infinite;
+  animation: shine 8s linear infinite;
+  filter: drop-shadow(0 0 10px rgba(0, 77, 64, 0.5));
 }
 
-@keyframes metalFlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* --- MOLDURA DE CÂMERA DE CINEMA (GLASS MORPHISM) --- */
-.camera-focus-frame {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none; /* Não atrapalha o click */
-  border: 1px solid rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(1px); /* Efeito de lente */
-  z-index: 2;
-}
-
-/* Símbolos de Câmera SVG minimalistas */
-.cam-icon {
-  width: 16px;
-  height: 16px;
-  opacity: 0.1;
-  fill: #ffffff;
-}
-
-/* Ponto de REC piscante */
-.rec-ponto {
-  width: 8px;
-  height: 8px;
-  background-color: #ff0000;
-  border-radius: 50%;
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-  animation: recBlink 1.5s infinite ease;
-}
-
-@keyframes recBlink {
-  0%, 100% { opacity: 0; }
-  50% { opacity: 1; }
+@keyframes shine {
+  to { background-position: 200% center; }
 }
