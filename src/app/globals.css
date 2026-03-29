@@ -5,8 +5,8 @@
 :root {
   --neon-cyan: #00f2ff;
   --star-white: rgba(255, 255, 255, 0.9);
-  --emerald-metal: #004d40; 
-  --deep-black: #050505; 
+  --emerald-metal: #004d40; /* Verde Esmeralda Metalizado */
+  --deep-black: #050505; /* O vazio absoluto */
 }
 
 html, body {
@@ -14,11 +14,12 @@ html, body {
   padding: 0;
   overflow-x: hidden;
   scroll-behavior: smooth;
-  background-color: var(--deep-black);
+  background-color: var(--deep-black); /* Começa no preto total */
   color: #ffffff;
+  font-family: 'JetBrains Mono', monospace; /* Fonte Hacker para a história */
 }
 
-/* --- UNIVERSO DE PARTÍCULAS EM MOVIMENTO --- */
+/* --- O CÉU PROFUNDO DE POEIRA CÓSMICA (SHOW DE CÉU) --- */
 .cosmic-dust-full {
   background-color: var(--deep-black);
   position: absolute;
@@ -29,66 +30,86 @@ html, body {
   z-index: 0;
 }
 
+/* Gerador de micro-estrelas e poeira com box-shadow (Alta performance) */
 .dust-point {
   width: 1.5px;
   height: 1.5px;
   background: var(--star-white);
   border-radius: 50%;
-  /* Partículas com brilho intenso e espalhadas */
+  /* Centenas de pontos de luz piscantes em profundidades diferentes */
   box-shadow: 
-    15vw 10vh 4px var(--star-white), 85vw 25vh 3px var(--neon-cyan), 45vw 55vh 6px var(--star-white),
-    12vw 85vh 3px var(--star-white), 65vw 75vh 4px var(--neon-cyan), 92vw 45vh 3px var(--star-white),
-    30vw 35vh 5px var(--star-white), 78vw 15vh 2px var(--star-white), 55vw 68vh 4px var(--neon-cyan);
+    100px 100px var(--neon-cyan), 300px 200px var(--star-white), 500px 150px var(--neon-cyan),
+    700px 300px var(--star-white), 900px 100px var(--neon-cyan), 200px 400px var(--star-white),
+    /*...posições... */
+    12vw 18vh var(--star-white), 32vw 8vh var(--star-white), 52vw 28vh var(--star-white),
+    72vw 12vh var(--star-white), 92vw 22vh var(--star-white);
+  
+  /* A Animação do brilho piscar */
   animation: starsBlinkSlow 8s infinite ease-in-out;
-  filter: drop-shadow(0 0 8px white);
 }
 
 @keyframes starsBlinkSlow {
-  0%, 100% { opacity: 0.2; transform: scale(0.9); }
-  50% { opacity: 1; transform: scale(1.3); }
+  0%, 100% { opacity: 0.1; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.1); }
 }
 
 /* --- ÚNICA ESTRELA CADENTE HORIZONTAL --- */
 .single-horizontal-shooting-star {
   position: absolute;
-  top: 25%;
+  top: 30%; /* Posição horizontal no céu */
   left: -300px;
-  width: 250px;
-  height: 1px;
+  width: 200px;
+  height: 2px;
   background: linear-gradient(90deg, transparent, #ffffff, transparent);
   border-radius: 999px;
-  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.6));
-  animation: shootingStarHorizontal 15s infinite ease-in-out;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
+  animation: shootingStarHorizontal 12s infinite ease-in-out;
+  animation-delay: 1s; /* Raro, aparece a cada 10s */
   z-index: 1;
 }
 
 @keyframes shootingStarHorizontal {
   0% { transform: translateX(0); opacity: 0; }
-  5% { opacity: 1; }
-  25% { transform: translateX(calc(100vw + 400px)); opacity: 0; }
-  100% { transform: translateX(calc(100vw + 400px)); opacity: 0; }
+  10% { opacity: 1; }
+  30% { transform: translateX(calc(100vw + 300px)); opacity: 0; }
+  100% { transform: translateX(calc(100vw + 300px)); opacity: 0; }
 }
 
-/* --- CANTO DO TXÁNA: METALIZADO ESMERALDA GIGANTE --- */
-.txana-brand-glass-emerald {
-  font-family: 'serif';
-  font-weight: 100;
+/* --- CANTO DO TXÁNA (GIGANTE - METAL METALIZADO VIDRO ESMERALDA) --- */
+.txana-brand-gigante {
+  font-family: 'serif'; /* Algo mais clássico e ancestral */
+  font-weight: 100; /* Extra fina */
   text-transform: uppercase;
-  letter-spacing: 0.4em; /* Ajustado para caber o tamanho gigante */
+  color: #ffffff;
   
-  /* Efeito de Vidro e Brilho */
-  filter: drop-shadow(0 0 35px rgba(255, 255, 255, 0.4));
+  /* O ESPAÇAMENTO "CHIQUE" */
+  letter-spacing: 0.6em; 
   
+  /* O BRILHO (AURA BRANCA ETÉREA) */
+  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.6));
+  
+  /* Gradiente místico adaptativo (Branco puro -> Metal Líquido -> Esmeralda) */
   background: linear-gradient(-45deg, #ffffff, #aab4b0, var(--emerald-metal), #aab4b0, #ffffff);
   background-size: 400% 400%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: metalFlow 10s ease infinite;
-  display: block;
+  animation: metalFlow 8s ease infinite;
 }
 
 @keyframes metalFlow {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
+}
+
+/* --- MOLDURA DE CÂMERA DE CINEMA (GLASS MORPHISM) --- */
+.camera-focus-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Não atrapalha o click */
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(1px); /* Efeito de lente */
+  z-index: 2;
 }
