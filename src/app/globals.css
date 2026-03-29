@@ -4,108 +4,93 @@
 
 :root {
   --neon-cyan: #00f2ff;
-  --star-white: rgba(255, 255, 255, 0.9);
-  --emerald-metal: #004d40; /* Verde Esmeralda Metalizado */
-  --deep-black: #050505; /* O vazio absoluto */
-  
-  /* Coordenadas do mouse que serão atualizadas via JS */
-  --mouse-x: 50%;
-  --mouse-y: 50%;
+  --smoke-color: rgba(0, 150, 200, 0.1); /* Fumaça azulada suave */
+  --deep-black: #050505;
 }
 
 html, body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  background-color: var(--deep-black); /* Começa no preto total */
-  color: #ffffff;
-  font-family: 'serif'; /* Fonte clássica para o Black Old */
-  cursor: none; /* Esconde o cursor padrão para a experiência pura */
-}
-
-/* --- O CÉU PROFUNDO DE PARTÍCULAS (CÉU DO UNIVERSO) --- */
-.cosmic-void {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  background-color: var(--deep-black);
-  z-index: 0;
   overflow: hidden;
+  background-color: var(--deep-black);
+  color: #ffffff;
+  font-family: 'JetBrains Mono', monospace;
 }
 
-/* Gerador de micro-estrelas com box-shadow (Leve e Brilhante) */
-.dust-point {
-  width: 1.5px;
-  height: 1.5px;
-  background: var(--star-white);
-  border-radius: 50%;
-  box-shadow: 
-    100px 100px var(--neon-cyan), 300px 200px var(--star-white), 500px 150px var(--neon-cyan),
-    700px 300px var(--star-white), 900px 100px var(--neon-cyan), 200px 400px var(--star-white);
-  animation: starsBlinkSlow 8s infinite ease-in-out;
+/* --- CONTAINER PRINCIPAL (A LUZ AZUL) --- */
+.homenagem-container {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Iluminação Azul Suave no Fundo */
+  background: radial-gradient(circle at center, #011526 0%, var(--deep-black) 80%);
 }
 
-@keyframes starsBlinkSlow {
-  0%, 100% { opacity: 0.1; transform: scale(0.9); }
-  50% { opacity: 1; transform: scale(1.1); }
-}
-
-/* --- ÚNICA ESTRELA CADENTE HORIZONTAL --- */
-.lone-cadente {
-  position: absolute;
-  top: 25%;
-  left: -300px;
-  width: 150px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #fff, transparent);
-  animation: slideAcross 15s infinite linear;
-  z-index: 1;
-}
-
-@keyframes slideAcross {
-  0% { left: -300px; opacity: 0; }
-  5% { opacity: 1; }
-  20% { left: 120vw; opacity: 0; }
-  100% { left: 120vw; opacity: 0; }
-}
-
-/* --- A MÁSCARA MÁGICA: AFASTANDO AS TREVAS --- */
-.darkness-mask {
+/* --- O CÓDIGO DA FUMAÇA GRÁFICA (CSS PURO LEVE) --- */
+.smoke-layer {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  z-index: 1; /* Fica sobre o céu, mas sob o texto */
-  
-  /* Gradiente radial que segue o mouse. O centro é transparente, as bordas são pretas */
-  background: radial-gradient(
-    circle at var(--mouse-x) var(--mouse-y), 
-    transparent 10%, 
-    var(--emerald-metal) 30%, 
-    var(--deep-black) 60%
-  );
-  
-  /* Efeito de Vidro para maior proteção visual */
-  backdrop-filter: blur(1px); 
-  mix-blend-mode: hard-light; /* Faz o metal esmeralda interagir com o fundo */
+  z-index: 1; /* Atrás do texto */
 }
 
-/* --- CANTO DO TXÁNA (METALIZADO ESMERALDA - MASSIVO) --- */
+/* Criando camadas de fumaça com pseudo-elementos */
+.smoke-layer::before,
+.smoke-layer::after {
+  content: '';
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  bottom: -50%;
+  left: -25%;
+  background: conic-gradient(
+    from 180deg at 50% 50%,
+    transparent,
+    var(--smoke-color),
+    transparent,
+    var(--smoke-color),
+    transparent
+  );
+  filter: blur(80px); /* Suaviza para parecer fumaça */
+  opacity: 0.3;
+  animation: smokeMove 15s infinite ease-in-out;
+}
+
+/* A segunda camada de fumaça se move de forma diferente */
+.smoke-layer::after {
+  width: 200%;
+  height: 200%;
+  bottom: -80%;
+  left: -50%;
+  opacity: 0.2;
+  background: radial-gradient(circle, var(--smoke-color), transparent 60%);
+  animation: smokeMoveAlternate 20s infinite ease-in-out;
+}
+
+/* Animações da Fumaça */
+@keyframes smokeMove {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 0.3; }
+  50% { transform: translate(20px, -30px) scale(1.1) rotate(5deg); opacity: 0.5; }
+}
+
+@keyframes smokeMoveAlternate {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 0.2; }
+  50% { transform: translate(-30px, -50px) scale(1.2) rotate(-5deg); opacity: 0.4; }
+}
+
+/* --- CANTO DO TXÁNA (TIPOGRAFIA) --- */
 .txana-emerald-metal {
   font-family: 'serif';
   text-transform: uppercase;
-  letter-spacing: 0.6em; 
-  filter: drop-shadow(0 0 20px rgba(0, 242, 255, 0.5)); /* Aura Neon */
-  
-  background: linear-gradient(135deg, #e0e0e0 0%, var(--emerald-metal) 45%, #ffffff 50%, var(--emerald-metal) 55%, #e0e0e0 100%);
-  background-size: 200% auto;
+  letter-spacing: 0.6em;
+  /* Brilho neon cyan */
+  filter: drop-shadow(0 0 10px #00f2ff);
+  background: linear-gradient(135deg, #e0e0e0 0%, #00f2ff 50%, #e0e0e0 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shine 8s linear infinite;
-}
-
-@keyframes shine {
-  to { background-position: 200% center; }
 }
