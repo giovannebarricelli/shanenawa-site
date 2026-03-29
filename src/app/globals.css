@@ -13,10 +13,10 @@ html, body {
   padding: 0;
   background-color: var(--deep-black);
   color: #ffffff;
-  overflow: hidden;
+  overflow: hidden; /* Mantém o foco na arte central */
 }
 
-/* --- CÉU COM FOCO TOTAL (NÍTIDO) --- */
+/* --- CÉU COM ESTRELAS NÍTIDAS --- */
 .cosmic-dust-full {
   background-color: var(--deep-black);
   position: absolute;
@@ -24,51 +24,53 @@ html, body {
   z-index: 0;
 }
 
-/* Estrelas sem blur, apenas brilho pontual para não desfoque */
 .dust-point {
   width: 2px;
   height: 2px;
   background: var(--star-pure);
   border-radius: 50%;
+  /* Posicionamento estratégico para não desfoque */
   box-shadow: 
-    150px 150px var(--star-pure), 400px 250px var(--neon-blue), 
-    600px 100px var(--star-pure), 800px 400px var(--neon-blue),
-    15vw 25vh var(--star-pure), 45vw 10vh var(--star-pure), 75vw 35vh var(--star-pure);
-  animation: starsBlinkFast 4s infinite ease-in-out;
+    10vw 20vh var(--star-pure), 30vw 10vh var(--neon-blue), 
+    50vw 30vh var(--star-pure), 80vw 15vh var(--neon-blue),
+    25vw 70vh var(--star-pure), 65vw 80vh var(--neon-blue);
+  filter: drop-shadow(0 0 3px var(--star-pure));
+  animation: starsBlink 4s infinite alternate;
 }
 
-@keyframes starsBlinkFast {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.2); }
+@keyframes starsBlink {
+  0% { opacity: 0.2; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1.1); }
 }
 
-/* --- A HISTÓRIA DE LUTA (H2 - BRANCO PURO) --- */
+/* --- TEXTO SUPERIOR (O PREPARO) --- */
 .luta-frase {
   font-family: 'serif';
   font-weight: 300;
   text-transform: uppercase;
-  letter-spacing: 1.2em; /* Bem espaçado para ser elite */
+  letter-spacing: 1em;
   color: #ffffff;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
 }
 
-/* --- SHANENAWA GIGANTE 3D AZUL --- */
-.shanenawa-3d-gigante {
+/* --- SHANENAWA GIGANTE 3D (EFEITO MONUMENTO) --- */
+.shanenawa-3d-huge {
   font-family: 'sans-serif';
-  font-weight: 950;
+  font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: -0.02em; /* Letras mais juntas para o efeito 3D bloco */
+  letter-spacing: -0.01em;
   
-  /* Gradiente Azul profundo para Neon */
-  background: linear-gradient(to bottom, #ffffff 10%, #00d9ff 40%, #004466 100%);
+  /* Gradiente e Brilho Azul */
+  background: linear-gradient(to bottom, #ffffff 10%, #00d9ff 45%, #004466 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
-  /* Camadas nítidas de sombra para o efeito 3D Sólido */
-  filter: drop-shadow(0 0 15px rgba(0, 217, 255, 0.4));
+  /* Camadas Sólidas para 3D Real */
   text-shadow: 
     0 2px 0 #0099cc,
     0 4px 0 #0077aa,
     0 6px 0 #005588,
-    0 15px 30px rgba(0, 0, 0, 0.8);
+    0 15px 40px rgba(0, 0, 0, 0.9);
+  
+  filter: drop-shadow(0 0 25px rgba(0, 217, 255, 0.3));
 }
