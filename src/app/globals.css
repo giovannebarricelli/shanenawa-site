@@ -4,21 +4,19 @@
 
 :root {
   --neon-blue: #00d9ff;
-  --deep-blue: #001a2c;
-  --star-white: rgba(255, 255, 255, 0.9);
+  --star-pure: #ffffff;
   --deep-black: #050505;
 }
 
 html, body {
   margin: 0;
   padding: 0;
-  overflow: hidden;
   background-color: var(--deep-black);
   color: #ffffff;
-  font-family: 'serif';
+  overflow: hidden;
 }
 
-/* --- CÉU PROFUNDO (SHOW DE CÉU QUE VOCÊ GOSTOU) --- */
+/* --- CÉU COM FOCO TOTAL (NÍTIDO) --- */
 .cosmic-dust-full {
   background-color: var(--deep-black);
   position: absolute;
@@ -26,58 +24,51 @@ html, body {
   z-index: 0;
 }
 
+/* Estrelas sem blur, apenas brilho pontual para não desfoque */
 .dust-point {
-  width: 1.5px;
-  height: 1.5px;
-  background: var(--star-white);
+  width: 2px;
+  height: 2px;
+  background: var(--star-pure);
   border-radius: 50%;
   box-shadow: 
-    100px 100px var(--neon-blue), 300px 200px var(--star-white), 
-    500px 150px var(--neon-blue), 12vw 18vh var(--star-white);
-  animation: starsBlinkSlow 8s infinite ease-in-out;
+    150px 150px var(--star-pure), 400px 250px var(--neon-blue), 
+    600px 100px var(--star-pure), 800px 400px var(--neon-blue),
+    15vw 25vh var(--star-pure), 45vw 10vh var(--star-pure), 75vw 35vh var(--star-pure);
+  animation: starsBlinkFast 4s infinite ease-in-out;
 }
 
-@keyframes starsBlinkSlow {
-  0%, 100% { opacity: 0.1; transform: scale(0.9); }
-  50% { opacity: 1; transform: scale(1.1); }
+@keyframes starsBlinkFast {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
 }
 
-/* --- TEXTO: A HISTÓRIA DE LUTA (FINO E ELEGANTE) --- */
+/* --- A HISTÓRIA DE LUTA (H2 - BRANCO PURO) --- */
 .luta-frase {
   font-family: 'serif';
-  font-weight: 200;
+  font-weight: 300;
   text-transform: uppercase;
-  letter-spacing: 0.8em;
-  color: rgba(255, 255, 255, 0.7);
-  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
+  letter-spacing: 1.2em; /* Bem espaçado para ser elite */
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
-/* --- SHANENAWA GIGANTE AZUL 3D --- */
-.shanenawa-3d-blue {
-  font-family: 'sans-serif'; /* Fonte mais encorpada para o 3D */
-  font-weight: 900;
+/* --- SHANENAWA GIGANTE 3D AZUL --- */
+.shanenawa-3d-gigante {
+  font-family: 'sans-serif';
+  font-weight: 950;
   text-transform: uppercase;
-  color: var(--neon-blue);
-  letter-spacing: 0.1em;
+  letter-spacing: -0.02em; /* Letras mais juntas para o efeito 3D bloco */
   
-  /* EFEITO 3D REAL (CAMADAS DE SOMBRA) */
-  text-shadow: 
-    0 1px 0 #0099cc,
-    0 2px 0 #0088bb,
-    0 3px 0 #0077aa,
-    0 4px 0 #006699,
-    0 5px 0 #005588,
-    0 10px 20px rgba(0, 0, 0, 0.5),
-    0 0 30px rgba(0, 217, 255, 0.4);
-    
-  background: linear-gradient(to bottom, #ffffff 0%, #00d9ff 50%, #005588 100%);
+  /* Gradiente Azul profundo para Neon */
+  background: linear-gradient(to bottom, #ffffff 10%, #00d9ff 40%, #004466 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  
-  transition: all 0.5s ease;
-}
 
-.shanenawa-3d-blue:hover {
-  filter: brightness(1.2);
-  transform: translateY(-5px);
+  /* Camadas nítidas de sombra para o efeito 3D Sólido */
+  filter: drop-shadow(0 0 15px rgba(0, 217, 255, 0.4));
+  text-shadow: 
+    0 2px 0 #0099cc,
+    0 4px 0 #0077aa,
+    0 6px 0 #005588,
+    0 15px 30px rgba(0, 0, 0, 0.8);
 }

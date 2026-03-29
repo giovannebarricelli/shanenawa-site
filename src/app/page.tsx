@@ -3,50 +3,49 @@ import { motion } from 'framer-motion';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#050505] flex items-center justify-center relative overflow-hidden">
+    <main className="min-h-screen bg-[#050505] flex items-center justify-center relative">
       
-      {/* 🌌 O CÉU DO UNIVERSO */}
+      {/* 🌌 CÉU NÍTIDO E FOCADO */}
       <div className="cosmic-dust-full">
         <div className="dust-point"></div>
-        <div className="dust-point opacity-40" style={{ animationDelay: '3s' }}></div>
+        <div className="dust-point opacity-60" style={{ animationDelay: '1s', transform: 'rotate(45deg)' }}></div>
       </div>
 
-      {/* 🛡️ CONTEÚDO CENTRAL */}
-      <div className="z-10 text-center flex flex-col items-center">
+      {/* 🛡️ CONTEÚDO QUE TOMA CONTA DA TELA */}
+      <div className="z-10 flex flex-col items-center w-full px-4">
         
-        {/* TÍTULO ORIGINAL (CANTO DO TXÁNA) MAIS DISCRETO ACIMA */}
-        <h2 className="text-white/20 font-serif text-xs tracking-[1.5em] mb-32 uppercase">
+        {/* TÍTULO NO TOPO (CANTO DO TXÁNA) */}
+        <h3 className="text-white/20 font-serif text-[10px] tracking-[2em] mb-48 uppercase">
           Canto do Txána
-        </h2>
+        </h3>
 
-        {/* ✊ O MANIFESTO DE LUTA */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 2 }}
-          className="flex flex-col items-center cursor-pointer group"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.5 }}
+          className="flex flex-col items-center w-full"
         >
-          {/* FRASE SUPERIOR */}
-          <span className="luta-frase text-sm md:text-xl mb-4">
+          {/* FRASE DE LUTA (LEITURA CLARA) */}
+          <span className="luta-frase text-xs md:text-2xl mb-6">
             A história de luta do povo
           </span>
 
-          {/* SHANENAWA GIGANTE EM AZUL 3D */}
-          <h1 className="shanenawa-3d-blue text-7xl md:text-9xl lg:text-[180px] leading-none">
+          {/* SHANENAWA GIGANTE (VISUAL GRÁFICO TOTAL) */}
+          <h1 className="shanenawa-3d-gigante text-7xl md:text-[150px] lg:text-[240px] leading-none select-none">
             SHANENAWA
           </h1>
 
-          {/* SUBTÍTULO DA MARCA ABAIXO DO NOME GIGANTE */}
-          <p className="mt-10 text-white/30 font-mono text-[9px] tracking-[2em] uppercase">
+          {/* SUBTÍTULO DA MARCA (SIMBIOSE) */}
+          <p className="mt-16 text-white/40 font-mono text-[10px] md:text-sm tracking-[2.5em] uppercase">
             uma marca que conta história
           </p>
         </motion.div>
 
       </div>
 
-      {/* FOOTER */}
-      <footer className="absolute bottom-10 w-full text-center opacity-10 font-mono text-[7px] tracking-[1em] text-white">
-        SIMBIOSE_PROJECT_2026
+      {/* FOOTER DISCRETO */}
+      <footer className="absolute bottom-8 w-full text-center opacity-10 font-mono text-[8px] tracking-[1.5em] text-white">
+        SHANENAWA_CORE_2026
       </footer>
     </main>
   );
