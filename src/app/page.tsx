@@ -48,7 +48,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* 3. CONTEÚDO PRINCIPAL (Homenagem Massiva + Título GIGANTE) */}
+        {/* 3. CONTEÚDO PRINCIPAL (Homenagem Massiva + Título e Subtítulo GIGANTES) */}
         <motion.div 
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -61,8 +61,9 @@ export default function Home() {
             Canto do Txána
           </h1>
           
-          {/* A MARCA QUE CONTA HISTÓRIA (SUBTÍTULO MONO - Tamanho mantido) */}
-          <p className="sub-homenagem text-white/40 font-mono text-[10px] tracking-[1.2em] mt-10 uppercase">
+          {/* A MARCA QUE CONTA HISTÓRIA (SUBTÍTULO MONO - Triplicado) */}
+          {/* text-[8px] no mobile, text-[32px] no desktop para leitura clara */}
+          <p className="sub-homenagem-gigante text-[10px] md:text-2xl lg:text-[32px] mt-10 uppercase">
             uma marca que conta história
           </p>
 

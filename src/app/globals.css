@@ -102,6 +102,18 @@ html, body {
   100% { background-position: 0% 50%; }
 }
 
+/* --- A MARCA QUE CONTA HISTÓRIA (SUBTÍTULO - GIGANTE) --- */
+.sub-homenagem-gigante {
+  font-family: 'monospace'; /* Equilíbrio digital */
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6); /* Maior opacidade para leitura */
+  
+  /* O ESPAÇAMENTO "CHIQUE" */
+  letter-spacing: 1.2em;
+  
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+}
+
 /* --- MOLDURA DE CÂMERA DE CINEMA (GLASS MORPHISM) --- */
 .camera-focus-frame {
   position: absolute;
