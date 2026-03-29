@@ -3,52 +3,64 @@ import { motion } from 'framer-motion';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#050505] relative overflow-hidden">
+    <main className="min-h-screen bg-[#050505]">
       
-      {/* 🌌 UNIVERSO EM MOVIMENTO */}
-      <div className="cosmic-void">
-        <div className="particle-stars" />
-        <div className="particle-stars opacity-40 translate-x-10 translate-y-20" />
-        <div className="lone-cadente" />
+      {/* 🛡️ HEADER TERM (SEM GRADE, SÓ O NOME) */}
+      <header className="fixed top-0 w-full z-50 bg-black/40 backdrop-blur-md border-b border-white/5 py-4 px-8 vazio-section">
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <h1 className="text-[#00f2ff] font-black italic text-xl">
+            Shanenawa_Txai
+          </h1>
+          <nav className="flex gap-8 opacity-60">
+            <span className="hover:text-[#00f2ff] cursor-pointer">/Rituals</span>
+            <span className="hover:text-[#00f2ff] cursor-pointer">/FlowZap</span>
+          </nav>
+        </div>
+      </header>
+
+      {/* 🌑 SEÇÃO DE HOMENAGEM: CANTO DO TXÁNA (O CÉU SAGRADO) */}
+      <section className="h-screen w-full flex items-center justify-center p-10 text-center relative overflow-hidden vazio-container">
         
-        {/* KENE SAGRADO (CONSTELAÇÃO ESCONDIDA) */}
-        <div className="absolute top-[15%] right-[10%] opacity-10 rotate-12 scale-150">
-           <svg width="200" height="200" viewBox="0 0 100 100" fill="none" stroke="white" strokeWidth="0.5">
-              <path d="M0 50 L25 25 L50 50 L75 75 L100 50 L75 25 L50 50 L25 75 Z" />
-              <circle cx="50" cy="50" r="1" fill="white" />
-           </svg>
+        {/* 1. O CÉU PROFUNDO DE POEIRA CÓSMICA (SHOW DE CÉU) */}
+        <div className="cosmic-dust-full">
+          <div className="dust-point"></div>
+          {/* Camada dupla para mais poeira sem pesar */}
+          <div className="dust-point opacity-50" style={{ animationDelay: '2s' }}></div>
+          
+          {/* ÚNICA ESTRELA CADENTE HORIZONTAL (SUTIL) */}
+          <div className="single-horizontal-shooting-star"></div>
         </div>
-      </div>
 
-      {/* 📹 INTERFACE CINEMATOGRÁFICA */}
-      <div className="absolute inset-0 z-10 pointer-events-none border-[1px] border-white/5 m-8">
-        <div className="absolute top-4 left-6 text-[8px] font-mono opacity-20 tracking-widest uppercase">
-          Sys_Operational: Shanenawa_Core
-        </div>
-      </div>
-
-      {/* 💎 CONTEÚDO CENTRAL */}
-      <section className="relative z-20 h-screen flex flex-col items-center justify-center p-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 3 }}
+        {/* 2. CONTEÚDO PRINCIPAL (Homenagem Massiva + Metal Esmeralda) */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.98 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 4, ease: "easeOut" }}
+          className="z-10"
         >
-          <h1 className="txana-emerald-metal text-5xl md:text-8xl lg:text-[110px]">
+          {/* O DESIGNER DA LETRA ELITE (Canto do Txána) */}
+          {/* text-6xl no mobile, text-[140px] no desktop para o 'chic visual' */}
+          <h1 className="txana-brand-glass-emerald text-6xl md:text-9xl lg:text-[140px] leading-[1.618]">
             Canto do Txána
           </h1>
-          <p className="mt-12 text-white/30 font-mono text-[9px] tracking-[1.5em] uppercase">
+          
+          {/* A MARCA QUE CONTA HISTÓRIA (SUBTÍTULO MONO) */}
+          <p className="sub-homenagem text-white/40 font-mono text-[10px] tracking-[1.2em] mt-10 uppercase">
             uma marca que conta história
           </p>
 
-          <button className="mt-24 px-10 py-3 border border-white/10 hover:border-emerald-500/50 transition-all text-white/40 text-[10px] tracking-[0.8em] uppercase backdrop-blur-sm">
-            Acessar Simbiose
-          </button>
+          <div className="mt-20 opacity-10 animate-bounce">
+            <span className="text-white text-xs tracking-[1em]">↓</span>
+          </div>
         </motion.div>
+
+        {/* Efeito de luz ambiente muito sutil para não pesar nos 4GB de RAM */}
+        <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.02),transparent_70%)]" />
       </section>
 
-      <footer className="absolute bottom-10 w-full text-center opacity-10 font-mono text-[7px] tracking-[1em] text-white">
-        SHANENAWA_SYSTEM_2026
+      {/* FOOTER TERM */}
+      <footer className="py-12 border-t border-white/5 text-center text-[8px] font-mono opacity-20 tracking-[1em] text-white bg-black relative z-10">
+        CANTO_DO_TXANA_X_SHANENAWA_2026
       </footer>
     </main>
   );
