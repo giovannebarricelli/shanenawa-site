@@ -1,55 +1,76 @@
 'use client';
+
+import React from 'react';
 import { motion } from 'framer-motion';
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen flex items-center justify-center bg-[#050505] overflow-hidden">
+    <main className="min-h-screen flex flex-col bg-[#050505] text-[#fff] font-sans selection:bg-[#00f2ff] selection:text-black">
       
-      {/* Aura de fundo (O rastro da Cobra) */}
-      <div className="bg-glow blur-[100px] -top-20 -left-20" />
-      <div className="bg-glow blur-[100px] -bottom-20 -right-20" />
+      {/* 🛡️ 1. O HEADER / MENU (ESTILO TERMINAL LUMINOSO) */}
+      <header className="w-full bg-[#0d0d0d] border-b border-white/5 py-3 px-6 fixed top-0 z-50 backdrop-blur-sm">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <h1 className="text-xl font-black italic tracking-tighter uppercase text-[#00f2ff]">
+            Shanenawa_Txa<span className="animate-pulse">i</span>
+          </h1>
+          <nav className="flex gap-6 font-mono text-[10px] tracking-[0.4em] uppercase text-white/50">
+            <span className="hover:text-[#00f2ff] cursor-pointer">/01_Rituals</span>
+            <span className="hover:text-[#00f2ff] cursor-pointer">/02_Vision</span>
+            <span className="hover:text-[#00f2ff] cursor-pointer">/03_Zap</span>
+          </nav>
+        </div>
+      </header>
 
-      {/* PAINEL CENTRAL (O TOTEM) */}
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1 }}
-        className="glass-panel relative z-10 p-12 md:p-24 flex flex-col items-center"
-      >
+      {/* 🐍 2. A HERO SECTION (A "JANELA" DA FOTO) */}
+      {/* Adicionei 'mt-[50px]' para compensar o header fixo */}
+      <section className="w-full mt-[50px] relative overflow-hidden h-[40vh] md:h-[60vh] border-b border-white/5">
         
-        {/* A PENA (Simulada para teste de sombra) */}
-        <motion.div
-          animate={{ y: [0, -10, 0], rotate: [0, 1, 0] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          className="feather-layer mb-10 text-[#00f2ff] opacity-80"
-        >
-          {/* Ícone representando a Pena Cinematográfica */}
-          <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.5">
-            <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z" />
-            <line x1="16" y1="8" x2="2" y2="22" />
-            <line x1="17.5" y1="15" x2="9" y2="15" />
-          </svg>
-        </motion.div>
-
-        {/* NOME METÁLICO */}
-        <h1 className="shane-title text-7xl md:text-[120px] uppercase italic">
-          Shanenawa
-        </h1>
-
-        <div className="mt-4 flex flex-col items-center gap-2">
-          <span className="text-white/80 text-3xl tracking-[0.4em] font-light uppercase italic">
-            Siri Siri Siri
-          </span>
-          <span className="text-[#00f2ff] font-mono text-[9px] tracking-[0.8em] opacity-40">
-            {`// PROTOCOLO DE SIMBIOSE ATIVO //`}
-          </span>
+        {/* ESPAÇO PARA FOTO/FUNDO LUMINOSO */}
+        <div className="absolute inset-0 z-0 bg-black">
+          {/* ⚠️ AQUI ENTRA A FOTO: Substitua a 'div' abaixo por uma tag 'img' */}
+          {/* Exemplo: <img src="/caminho/para/sua/foto.webp" className="w-full h-full object-cover" alt="..." /> */}
+          <div className="w-full h-full bg-[#050505] relative flex items-center justify-center">
+            {/* Um gradiente leve para não travar o PC */}
+            <div className="absolute inset-0 bg-gradient-radial from-[#00f2ff0a] to-transparent blur-[120px]" />
+            {/* Texto de placeholder até você ter a foto */}
+            <p className="text-[#00f2ff] font-mono text-[10px] tracking-[1em] opacity-30 animate-pulse">
+              {`// [ WAITING FOR MEDITATION_FRAME ] //`}
+            </p>
+          </div>
         </div>
 
-        <p className="mt-12 text-[10px] tracking-[0.5em] text-white/30 font-bold max-w-xs text-center leading-loose">
-          O RASTRO QUE MUDA <br/> O SEU DNA.
-        </p>
+        {/* MÁSCARA SHANENAWA (ESTÁTICA, SEM PESAR NA RAM) */}
+        <div className="absolute inset-0 z-10 p-12 md:p-24 flex flex-col items-center justify-center text-center bg-black/60 backdrop-blur-sm">
+          <motion.div
+            animate={{ opacity: [0.3, 0.6, 0.3] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <h2 className="shane-title text-6xl md:text-9xl uppercase italic tracking-tighter mb-4">
+              Shanenawa
+            </h2>
+          </motion.div>
+          
+          <div className="space-y-1 mb-8">
+            <p className="text-white text-2xl md:text-4xl font-light tracking-[0.4em] uppercase italic opacity-80">
+              Siri Siri Siri
+            </p>
+            <p className="text-[#00f2ff] font-mono text-[9px] tracking-[0.7em] uppercase opacity-40">
+              {`// [ RASTRO DE CURA CONECTADO ] //`}
+            </p>
+          </div>
+        </div>
 
-      </motion.div>
+      </section>
+
+      {/* 💻 3. A CONTEÚDO (O CHÃO DO TOTEM) */}
+      <section className="w-full flex-grow bg-[#050505] p-12 md:p-24">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h3 className="text-shane-metal text-3xl font-black mb-6 shane-title italic">01_How to connect</h3>
+          <p className="text-white/60 text-lg md:text-2xl font-light tracking-wide max-w-2xl mx-auto leading-relaxed">
+            NÃO É O SITE... É O RASTRO QUE MUDA O SEU DNA. ACESSE A SIMBIOSE.
+          </p>
+        </div>
+      </section>
 
     </main>
   );
