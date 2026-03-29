@@ -3,8 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --deep-black: #050505;
-  --star-white: rgba(255, 255, 255, 0.8);
+  --deep-black: #030303;
 }
 
 html, body {
@@ -14,66 +13,30 @@ html, body {
   scroll-behavior: smooth;
 }
 
-/* --- CAMADA DE ESTRELAS (EFEITO AMAZÔNIA) --- */
-.sky-container {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
-  z-index: 0;
+/* --- A LETRA DA HOMENAGEM --- */
+.homenagem-title {
+  font-family: 'serif';
+  font-weight: 100;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  /* Branco puro com brilho etéreo */
+  color: #ffffff;
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
+  
+  /* Animação de respiração: a homenagem parece viva */
+  animation: glowBreath 8s ease-in-out infinite;
 }
 
-/* Gerador de micro-estrelas com box-shadow (Alta performance) */
-.stars {
-  width: 1px;
-  height: 1px;
-  background: transparent;
-  box-shadow: 454px 1054px var(--star-white), 184px 1254px var(--star-white), 125px 354px var(--star-white), 1500px 200px var(--star-white), 800px 600px var(--star-white), 1200px 900px var(--star-white), 300px 100px var(--star-white), 1400px 400px var(--star-white);
-  animation: starsBlink 4s infinite ease-in-out;
+@keyframes glowBreath {
+  0%, 100% { opacity: 0.8; filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3)); }
+  50% { opacity: 1; filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.6)); }
 }
 
-@keyframes starsBlink {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
-}
-
-/* --- ESTRELA CADENTE --- */
-.shooting-star {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  height: 2px;
-  background: linear-gradient(-45deg, #5f91ff, rgba(0, 0, 255, 0));
-  border-radius: 999px;
-  filter: drop-shadow(0 0 6px #699bff);
-  animation: tail 3000ms ease-in-out infinite, shooting 3000ms ease-in-out infinite;
-}
-
-@keyframes tail {
-  0% { width: 0; }
-  30% { width: 100px; }
-  100% { width: 0; }
-}
-
-@keyframes shooting {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(300px); }
-}
-
-/* Estilo do título metálico que você já usa */
-.shane-title-metal {
-  background: linear-gradient(-45deg, #ffffff, #00f2ff, #1a2a3a, #00f2ff, #ffffff);
-  background-size: 400% 400%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: metalFlow 8s ease infinite;
-  filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.3));
-  font-weight: 900;
-}
-
-@keyframes metalFlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.sub-homenagem {
+  font-family: 'monospace';
+  font-size: 8px;
+  letter-spacing: 1.2em;
+  color: rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  margin-top: 2rem;
 }
