@@ -3,63 +3,45 @@ import { motion } from 'framer-motion';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#050505]">
+    <main className="min-h-screen bg-[#050505] overflow-hidden">
       
-      {/* 🛡️ HEADER TERM (SEM GRADE, SÓ O NOME) */}
-      <header className="fixed top-0 w-full z-50 bg-black/40 backdrop-blur-md border-b border-white/5 py-4 px-8 vazio-section">
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <h1 className="text-[#00f2ff] font-black italic text-xl">
-            Shanenawa_Txai
-          </h1>
-          <nav className="flex gap-8 opacity-60">
-            <span className="hover:text-[#00f2ff] cursor-pointer">/Rituals</span>
-            <span className="hover:text-[#00f2ff] cursor-pointer">/FlowZap</span>
-          </nav>
-        </div>
-      </header>
+      {/* BACKGROUND ESTELAR */}
+      <div className="cosmic-dust-full">
+        <div className="dust-point"></div>
+      </div>
 
-      {/* 🌑 SEÇÃO DE HOMENAGEM: CANTO DO TXÁNA (O CÉU SAGRADO) */}
-      <section className="h-screen w-full flex items-center justify-center p-10 text-center relative overflow-hidden vazio-container">
+      {/* CONTEÚDO PRINCIPAL */}
+      <section className="h-screen w-full flex flex-col items-center justify-center p-6 text-center relative z-10">
         
-        {/* 1. O CÉU PROFUNDO DE PARTÍCULAS (SHOW DE CÉU) */}
-        <div className="cosmic-dust-full">
-          <div className="dust-point"></div>
-          {/* Camada dupla para mais profundidade */}
-          <div className="dust-point opacity-50" style={{ animationDelay: '2s' }}></div>
-          
-          {/* ÚNICA ESTRELA CADENTE HORIZONTAL */}
-          <div className="single-horizontal-shooting-star"></div>
-        </div>
-
-        {/* 2. CONTEÚDO CENTRAL (Homenagem Massiva + Metal Esmeralda) */}
         <motion.div 
-          initial={{ opacity: 0, scale: 0.98 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 4, ease: "easeOut" }}
-          className="z-10"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 2.5, ease: "easeOut" }}
         >
-          {/* O DESIGNER DA LETRA ELITE (Canto do Txána - Tamanho Perfeito) */}
-          <h1 className="txana-brand-glass-emerald text-6xl md:text-9xl lg:text-[140px] leading-[1.618]">
+          {/* TÍTULO: CANTO DO TXÁNA (GROSSO E GIGANTE) */}
+          <h1 className="txana-brand-solid-emerald text-5xl md:text-8xl lg:text-[160px] leading-tight">
             Canto do Txána
           </h1>
           
-          {/* A MARCA QUE CONTA HISTÓRIA (SUBTÍTULO MONO - Tamanho Mandado) */}
-          <p className="sub-homenagem text-white/40 font-mono text-[10px] tracking-[1.2em] mt-10 uppercase">
+          {/* SUBTÍTULO: UMA MARCA QUE CONTA HISTÓRIA */}
+          <p className="sub-homenagem-bold text-[10px] md:text-sm mt-8 uppercase">
             uma marca que conta história
           </p>
 
-          <div className="mt-20 opacity-10 animate-bounce">
-            <span className="text-white text-xs tracking-[1em]">↓</span>
-          </div>
+          {/* BOTÃO DE MANIFESTO (TEXTO QUE VOCÊ ESCOLHEU) */}
+          <motion.button 
+            whileHover={{ scale: 1.02 }}
+            className="mt-20 px-10 py-4 border border-white/10 bg-white/5 hover:bg-white/10 hover:border-emerald-500/50 transition-all text-white/50 text-[11px] tracking-[0.5em] uppercase backdrop-blur-md"
+          >
+             A história de luta do povo shanenawa
+          </motion.button>
         </motion.div>
 
-        {/* Efeito de luz ambiente sutil para não pesar */}
-        <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.01),transparent_70%)]" />
       </section>
 
-      {/* FOOTER TERM */}
-      <footer className="py-12 border-t border-white/5 text-center text-[8px] font-mono opacity-20 tracking-[1em] text-white bg-black relative z-10">
-        CANTO_DO_TXANA_X_SHANENAWA_2026
+      {/* RODAPÉ MINIMALISTA */}
+      <footer className="absolute bottom-8 w-full text-center opacity-10 font-mono text-[7px] tracking-[1em] text-white">
+        CANTO_DO_TXANA_2026
       </footer>
     </main>
   );
