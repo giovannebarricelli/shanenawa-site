@@ -1,75 +1,63 @@
 'use client';
-
-import React from 'react';
 import { motion } from 'framer-motion';
 
 export default function Home() {
   return (
-    <main className="min-h-screen flex flex-col bg-[#050505] text-[#fff] font-sans selection:bg-[#00f2ff] selection:text-black">
+    <main className="min-h-screen flex flex-col bg-[#050505]">
       
-      {/* 🛡️ 1. O HEADER / MENU (ESTILO TERMINAL LUMINOSO) */}
-      <header className="w-full bg-[#0d0d0d] border-b border-white/5 py-3 px-6 fixed top-0 z-50 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <h1 className="text-xl font-black italic tracking-tighter uppercase text-[#00f2ff]">
-            Shanenawa_Txa<span className="animate-pulse">i</span>
+      {/* 🛡️ HEADER FIXO (ESTILO TERMINAL) */}
+      <header className="fixed top-0 w-full z-50 bg-black/50 backdrop-blur-md border-b border-white/5 py-4 px-8">
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <h1 className="text-[#00f2ff] font-black italic tracking-tighter uppercase text-xl">
+            Shanenawa_Txai
           </h1>
-          <nav className="flex gap-6 font-mono text-[10px] tracking-[0.4em] uppercase text-white/50">
-            <span className="hover:text-[#00f2ff] cursor-pointer">/01_Rituals</span>
-            <span className="hover:text-[#00f2ff] cursor-pointer">/02_Vision</span>
-            <span className="hover:text-[#00f2ff] cursor-pointer">/03_Zap</span>
+          <nav className="flex gap-6 font-mono text-[9px] tracking-[0.3em] uppercase opacity-60">
+            <span className="hover:text-[#00f2ff] cursor-pointer">/Rituals</span>
+            <span className="hover:text-[#00f2ff] cursor-pointer">/Biohacking</span>
+            <span className="hover:text-[#00f2ff] cursor-pointer">/FlowZap</span>
           </nav>
         </div>
       </header>
 
-      {/* 🐍 2. A HERO SECTION (A "JANELA" DA FOTO) */}
-      {/* Adicionei 'mt-[50px]' para compensar o header fixo */}
-      <section className="w-full mt-[50px] relative overflow-hidden h-[40vh] md:h-[60vh] border-b border-white/5">
-        
-        {/* ESPAÇO PARA FOTO/FUNDO LUMINOSO */}
-        <div className="absolute inset-0 z-0 bg-black">
-          {/* ⚠️ AQUI ENTRA A FOTO: Substitua a 'div' abaixo por uma tag 'img' */}
-          {/* Exemplo: <img src="/caminho/para/sua/foto.webp" className="w-full h-full object-cover" alt="..." /> */}
-          <div className="w-full h-full bg-[#050505] relative flex items-center justify-center">
-            {/* Um gradiente leve para não travar o PC */}
-            <div className="absolute inset-0 bg-gradient-radial from-[#00f2ff0a] to-transparent blur-[120px]" />
-            {/* Texto de placeholder até você ter a foto */}
-            <p className="text-[#00f2ff] font-mono text-[10px] tracking-[1em] opacity-30 animate-pulse">
-              {`// [ WAITING FOR MEDITATION_FRAME ] //`}
-            </p>
-          </div>
+      {/* 🐍 HERO SECTION (A JANELA DA FOTO) */}
+      <section className="hero-container mt-[60px]">
+        {/* Placeholder da Foto - Quando tiver a sua, troque a DIV abaixo por <img src="/suafoto.jpg" className="hero-image" /> */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#00f2ff05] to-[#050505] flex items-center justify-center">
+           <p className="text-[#00f2ff] font-mono text-[10px] tracking-[1em] opacity-20 animate-pulse">
+             [ WAITING_FOR_IMAGE_INPUT ]
+           </p>
         </div>
 
-        {/* MÁSCARA SHANENAWA (ESTÁTICA, SEM PESAR NA RAM) */}
-        <div className="absolute inset-0 z-10 p-12 md:p-24 flex flex-col items-center justify-center text-center bg-black/60 backdrop-blur-sm">
-          <motion.div
-            animate={{ opacity: [0.3, 0.6, 0.3] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        {/* TEXTO SOBRE A FOTO */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="glass-panel p-10 text-center"
           >
-            <h2 className="shane-title text-6xl md:text-9xl uppercase italic tracking-tighter mb-4">
+            <h2 className="shane-title text-5xl md:text-8xl uppercase italic">
               Shanenawa
             </h2>
-          </motion.div>
-          
-          <div className="space-y-1 mb-8">
-            <p className="text-white text-2xl md:text-4xl font-light tracking-[0.4em] uppercase italic opacity-80">
+            <p className="text-white text-xl md:text-3xl tracking-[0.5em] uppercase font-light mt-2">
               Siri Siri Siri
             </p>
-            <p className="text-[#00f2ff] font-mono text-[9px] tracking-[0.7em] uppercase opacity-40">
-              {`// [ RASTRO DE CURA CONECTADO ] //`}
-            </p>
-          </div>
+          </motion.div>
         </div>
-
       </section>
 
-      {/* 💻 3. A CONTEÚDO (O CHÃO DO TOTEM) */}
-      <section className="w-full flex-grow bg-[#050505] p-12 md:p-24">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h3 className="text-shane-metal text-3xl font-black mb-6 shane-title italic">01_How to connect</h3>
-          <p className="text-white/60 text-lg md:text-2xl font-light tracking-wide max-w-2xl mx-auto leading-relaxed">
-            NÃO É O SITE... É O RASTRO QUE MUDA O SEU DNA. ACESSE A SIMBIOSE.
-          </p>
-        </div>
+      {/* 💻 CONTEÚDO (O CHÃO DO TOTEM) */}
+      <section className="py-20 px-10 text-center">
+        <h3 className="text-[#00f2ff] font-mono text-xs tracking-[0.5em] uppercase mb-6 opacity-40">
+          // Protocolo de Simbiose //
+        </h3>
+        <p className="text-white/60 text-lg md:text-2xl font-light max-w-3xl mx-auto leading-relaxed italic">
+          "O RASTRO QUE MUDA O SEU DNA. ACESSE A SIMBIOSE ENTRE O CÓDIGO ANCESTRAL E O HARDWARE MODERNO."
+        </p>
+        
+        {/* BOTÃO DE CONVERSÃO (FLOWZAP) */}
+        <button className="mt-12 px-10 py-4 border border-[#00f2ff]/30 text-[#00f2ff] font-bold uppercase tracking-widest hover:bg-[#00f2ff] hover:text-black transition-all duration-500">
+          Entrar no Fluxo
+        </button>
       </section>
 
     </main>

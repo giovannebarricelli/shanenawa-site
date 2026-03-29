@@ -1,36 +1,46 @@
-/* 1. Reset de Margens para o Layout de Coluna */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🛡️ RESET DE HARDWARE */
 html, body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  background-color: #050505;
+  color: #fff;
 }
 
-/* 2. O Header Fixo (Estilo Transparente/Glass) */
-header {
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px); /* Suporte para navegadores baseados em Webkit no Parrot */
-}
-
-/* 3. A "Janela" da Foto (Hero Section) */
-/* Isso garante que a foto ocupe o espaço sem distorcer, como no site Txai */
-.hero-image-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; 
-  object-position: center;
-}
-
-/* 4. O Brilho Metálico que você já gosta */
+/* 🐍 O BRILHO METÁLICO SHANENAWA */
 .shane-title {
   background: linear-gradient(180deg, #ffffff 0%, #00f2ff 50%, #1a2a3a 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 20px rgba(0, 242, 255, 0.3));
+  filter: drop-shadow(0 0 15px rgba(0, 242, 255, 0.4));
+  font-weight: 900;
 }
 
-/* 5. Efeito de Vidro Suave (Leve para 4GB de RAM) */
+/* 🖼️ A JANELA "PORTAL TXAI" (HERO) */
+.hero-container {
+  width: 100%;
+  height: 60vh;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.6; /* Deixa a foto mais 'dark' para o texto brilhar */
+}
+
+/* 🧪 EFEITO GLASS (LEVE PARA 4GB) */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 24px;
 }
