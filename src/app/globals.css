@@ -3,61 +3,72 @@
 @tailwind utilities;
 
 :root {
-  --deep-black: #050505; /* O Vazio */
-  --space-blue: #091220; /* O Início do Cosmos */
-  --neon-cyan: #00f2ff;
+  --deep-black: #050505;
+  --star-white: rgba(255, 255, 255, 0.8);
 }
 
 html, body {
-  margin: 0;
-  padding: 0;
-  background-color: var(--deep-black); /* Começa no preto total */
-  color: #ffffff;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
-  font-family: 'JetBrains Mono', monospace; /* Fonte Hacker para a história */
-}
-
-/* --- MUNDO 1: O VAZIO (DESCANSO) --- */
-.vazio-section {
   background-color: var(--deep-black);
+  color: #ffffff;
+  margin: 0;
+  scroll-behavior: smooth;
 }
 
-/* --- MUNDO 2: O NASCIMENTO DO COSMOS (TRANSIÇÃO) --- */
-/* Cria um degradê suave do preto para o azul-universo */
-.cosmos-transition {
-  background: linear-gradient(
-    to bottom, 
-    var(--deep-black) 0%, 
-    var(--space-blue) 100%
-  );
+/* --- CAMADA DE ESTRELAS (EFEITO AMAZÔNIA) --- */
+.sky-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+  z-index: 0;
 }
 
-/* --- MUNDO 3: O UNIVERSO ESTELAR (FUNDO DO PORTAL) --- */
-/* Uma textura de micro-estrelas e nebulosa (leve para 4GB) */
-.universe-background {
-  background: 
-    radial-gradient(circle at center, rgba(0, 242, 255, 0.03) 0%, transparent 70%),
-    url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIHZpZXdCb3g9IjAgMCA0IDQiPjxnIGZpbGwtcnVsZT0iZXZlbm9kZCI+PGcgZmlsbD0iI2ZmZiIgZmlsbC1vcGFjaXR5PSIwLjA1Ij48cGF0aCBkPSJNMCAwaDF2MUgwVjB6bTMgMGgxdjFIM1Ywek0wIDNoMXYxSDBWM3ptMyAwaDF2MUgzVjN6TTIgMmgxdjFIMlYyeiIvPjwvZz48L2c+PC9zdmc+');
-  background-attachment: fixed; /* Efeito Parallax Leve */
+/* Gerador de micro-estrelas com box-shadow (Alta performance) */
+.stars {
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow: 454px 1054px var(--star-white), 184px 1254px var(--star-white), 125px 354px var(--star-white), 1500px 200px var(--star-white), 800px 600px var(--star-white), 1200px 900px var(--star-white), 300px 100px var(--star-white), 1400px 400px var(--star-white);
+  animation: starsBlink 4s infinite ease-in-out;
 }
 
-/* --- GRADE NEON (SOBREPOSTA NO COSMOS) --- */
-.bg-grid-symbio {
-  background-size: 60px 60px;
-  background-image: 
-    linear-gradient(to right, rgba(0, 242, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 242, 255, 0.02) 1px, transparent 1px);
+@keyframes starsBlink {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
 }
 
-/* --- LETRA METAL LÍQUIDO --- */
+/* --- ESTRELA CADENTE --- */
+.shooting-star {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 2px;
+  background: linear-gradient(-45deg, #5f91ff, rgba(0, 0, 255, 0));
+  border-radius: 999px;
+  filter: drop-shadow(0 0 6px #699bff);
+  animation: tail 3000ms ease-in-out infinite, shooting 3000ms ease-in-out infinite;
+}
+
+@keyframes tail {
+  0% { width: 0; }
+  30% { width: 100px; }
+  100% { width: 0; }
+}
+
+@keyframes shooting {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(300px); }
+}
+
+/* Estilo do título metálico que você já usa */
 .shane-title-metal {
   background: linear-gradient(-45deg, #ffffff, #00f2ff, #1a2a3a, #00f2ff, #ffffff);
   background-size: 400% 400%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: metalFlow 8s ease infinite;
-  filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.2));
+  filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.3));
   font-weight: 900;
 }
 
@@ -65,12 +76,4 @@ html, body {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
-}
-
-/* --- PAINEL DE VIDRO (GLASSMORPHISM LEVE) --- */
-.glass-panel {
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 30px;
 }
