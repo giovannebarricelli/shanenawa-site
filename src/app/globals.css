@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 :root {
-  --neon-cyan: #00f2ff;
+  --neon-blue: #00d9ff;
+  --deep-blue: #001a2c;
   --star-white: rgba(255, 255, 255, 0.9);
-  --emerald-metal: #004d40;
   --deep-black: #050505;
 }
 
@@ -18,68 +18,66 @@ html, body {
   font-family: 'serif';
 }
 
-/* --- CÉU PROFUNDO (STARS) --- */
+/* --- CÉU PROFUNDO (SHOW DE CÉU QUE VOCÊ GOSTOU) --- */
 .cosmic-dust-full {
   background-color: var(--deep-black);
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
   z-index: 0;
 }
 
 .dust-point {
-  width: 2px;
-  height: 2px;
+  width: 1.5px;
+  height: 1.5px;
   background: var(--star-white);
   border-radius: 50%;
   box-shadow: 
-    15vw 20vh var(--neon-cyan), 40vw 10vh var(--star-white), 70vw 30vh var(--neon-cyan),
-    25vw 60vh var(--star-white), 80vw 70vh var(--star-white);
-  animation: starsBlinkSlow 6s infinite ease-in-out;
+    100px 100px var(--neon-blue), 300px 200px var(--star-white), 
+    500px 150px var(--neon-blue), 12vw 18vh var(--star-white);
+  animation: starsBlinkSlow 8s infinite ease-in-out;
 }
 
 @keyframes starsBlinkSlow {
-  0%, 100% { opacity: 0.2; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.2); }
+  0%, 100% { opacity: 0.1; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.1); }
 }
 
-/* --- CANTO DO TXÁNA (LETRA GROSSA E METALIZADA) --- */
-.txana-brand-solid-emerald {
+/* --- TEXTO: A HISTÓRIA DE LUTA (FINO E ELEGANTE) --- */
+.luta-frase {
   font-family: 'serif';
-  /* AJUSTE DE ESPESSURA: De 100 para 700 (Bold) */
-  font-weight: 700; 
+  font-weight: 200;
   text-transform: uppercase;
-  /* Espaçamento elegante, mas não tão aberto para não perder o peso */
-  letter-spacing: 0.4em; 
+  letter-spacing: 0.8em;
+  color: rgba(255, 255, 255, 0.7);
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.2));
+}
+
+/* --- SHANENAWA GIGANTE AZUL 3D --- */
+.shanenawa-3d-blue {
+  font-family: 'sans-serif'; /* Fonte mais encorpada para o 3D */
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--neon-blue);
+  letter-spacing: 0.1em;
   
-  /* Sombra para destacar a espessura no preto */
-  filter: drop-shadow(0 0 15px rgba(0, 242, 255, 0.3));
-  
-  /* Gradiente mais visível em letras grossas */
-  background: linear-gradient(
-    135deg, 
-    #ffffff 0%, 
-    #aab4b0 25%, 
-    var(--emerald-metal) 50%, 
-    #aab4b0 75%, 
-    #ffffff 100%
-  );
-  background-size: 200% auto;
+  /* EFEITO 3D REAL (CAMADAS DE SOMBRA) */
+  text-shadow: 
+    0 1px 0 #0099cc,
+    0 2px 0 #0088bb,
+    0 3px 0 #0077aa,
+    0 4px 0 #006699,
+    0 5px 0 #005588,
+    0 10px 20px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(0, 217, 255, 0.4);
+    
+  background: linear-gradient(to bottom, #ffffff 0%, #00d9ff 50%, #005588 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shineReflect 10s linear infinite;
+  
+  transition: all 0.5s ease;
 }
 
-@keyframes shineReflect {
-  to { background-position: 200% center; }
-}
-
-/* --- SUBTÍTULO: UMA MARCA QUE CONTA HISTÓRIA --- */
-.sub-homenagem-bold {
-  font-family: 'monospace';
-  font-weight: 500;
-  letter-spacing: 0.8em;
-  color: rgba(255, 255, 255, 0.5);
-  text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
+.shanenawa-3d-blue:hover {
+  filter: brightness(1.2);
+  transform: translateY(-5px);
 }
