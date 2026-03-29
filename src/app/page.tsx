@@ -1,90 +1,67 @@
 'use client';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { motion } from 'framer-motion';
 
 export default function Home() {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"]
-  });
-
-  // Movimento Sinuoso (Jiboia): A letra se move em X conforme o scroll desce em Y
-  // Baseado na Proporção Áurea para os limites de movimento
-  const moveX = useTransform(scrollYProgress, [0, 0.5, 1], [0, 100, -100]);
-  const opacityHero = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
-
   return (
-    <main ref={containerRef} className="min-h-[300vh] bg-[#030303] selection:bg-white/20">
+    <main className="min-h-screen bg-[#050505]">
       
-      {/* 🌑 SEÇÃO 1: A ORIGEM (CANTO DO TXÁNA) */}
-      <section className="h-screen sticky top-0 flex flex-col items-center justify-center p-10 overflow-hidden">
+      {/* 🌑 SEÇÃO DE HOMENAGEM: CANTO DO TXÁNA (O CÉU ESTRELADO) */}
+      <section className="h-screen w-full flex items-center justify-center p-10 text-center relative overflow-hidden vazio-container">
         
+        {/* 1. O CÉU ESTRELADO PISCANTE NO FUNDO */}
+        <div className="sky-stars-blink"></div>
+
+        {/* 2. A MOLDURA DE CÂMERA DIGITAL / FOCO (GLASS) */}
+        <div className="camera-focus-frame">
+          {/* Ponto de REC piscante */}
+          <div className="rec-ponto"></div>
+          
+          {/* Símbolos de Câmera nos cantos (SVG Minimalista) */}
+          <div className="absolute top-8 left-8 text-white/10 font-mono text-[9px] tracking-widest">
+            {`[REC]`}
+          </div>
+          <div className="absolute top-8 right-8 text-white/10 font-mono text-[9px] tracking-widest mr-8">
+            {`30_MAR_2026`}
+          </div>
+          <div className="absolute bottom-8 left-8 text-white/10 font-mono text-[9px] tracking-widest">
+            {`00:30 // ORIGIN_STORY`}
+          </div>
+          <div className="absolute bottom-8 right-8 text-white/10 font-mono text-[9px] tracking-widest">
+            {`4K // S_OS`}
+          </div>
+        </div>
+
+        {/* 3. O TEXTO PRINCIPAL (Homenagem Massiva) */}
         <motion.div 
-          style={{ opacity: opacityHero }}
-          className="z-10 text-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 4, ease: "easeOut" }}
+          className="z-10"
         >
-          {/* Proporção Áurea no tamanho da letra (Escala de Luxo) */}
-          <h1 className="homenagem-title text-5xl md:text-[10.6vw] leading-[1.618] mb-[1.618rem]">
+          {/* O DESIGNER DA LETRA ELITE (Canto do Txána) */}
+          {/* text-6xl no mobile, text-[140px] no desktop para o 'chic visual' */}
+          <h1 className="txana-brand-elite text-6xl md:text-9xl lg:text-[140px] leading-[1.618]">
             Canto do Txána
           </h1>
           
-          <p className="sub-homenagem tracking-[1.618em] opacity-30">
+          {/* A MARCA QUE CONTA HISTÓRIA (SUBTÍTULO MONO) */}
+          <p className="sub-homenagem text-white/40 font-mono text-[10px] tracking-[1.2em] mt-10 uppercase">
             uma marca que conta história
           </p>
 
-          {/* O Traço que pulsa como o coração da floresta */}
-          <motion.div 
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ duration: 1.618, ease: "easeInOut" }}
-            className="w-[16.18vw] h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent mx-auto mt-[2.618rem]"
-          />
+          <div className="mt-20 opacity-10 animate-bounce">
+            <span className="text-white text-xs tracking-[1em]">↓</span>
+          </div>
         </motion.div>
 
-        {/* Aura etérea de fundo */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.03),transparent_61.8%)]" />
+        {/* Efeito de luz ambiente de nebuloza no centro (sutil para 4GB) */}
+        <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,242,255,0.02),transparent_70%)]" />
       </section>
 
-      {/* 🐍 SEÇÃO 2: O RASTRO (TRANSIÇÃO SINUOSA) */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <motion.div 
-          style={{ x: moveX }} // O movimento da jiboia acontece aqui
-          className="flex flex-col items-center"
-        >
-          <p className="text-white/10 font-serif italic text-2xl md:text-5xl tracking-[0.3em] whitespace-nowrap">
-             O rastro da cobra grande é a primeira geometria
-          </p>
-          <div className="h-[61.8vh] w-[1px] bg-gradient-to-b from-white/20 to-transparent mt-10" />
-        </motion.div>
-      </section>
-
-      {/* 💻 SEÇÃO 3: PORTAL SHANENAWA (O DESTINO) */}
-      <section className="min-h-screen flex items-center justify-center universe-stars-only relative">
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.618 }}
-          className="glass-panel p-[6.18vw] text-center border border-white/5 mx-6"
-        >
-           <h2 className="shane-title-metal text-6xl md:text-[8.5vw] italic leading-none">
-             Shanenawa
-           </h2>
-           <p className="text-white/40 font-mono tracking-[1em] text-[8px] mt-[1.618rem] uppercase">
-             Siri Siri Siri // Conexão Vital
-           </p>
-           
-           <button className="mt-[4.236rem] px-[2.618rem] py-[1rem] border border-white/20 text-white font-light uppercase tracking-[0.618em] hover:bg-white hover:text-black transition-all duration-700 text-[10px]">
-             Entrar na Simbiose
-           </button>
-        </motion.div>
-      </section>
-
-      {/* FOOTER MATEMÁTICO */}
-      <footer className="py-[1.618rem] text-center opacity-10 font-mono text-[7px] tracking-[1.618em]">
-        PH_RATIO_ALIGNED // 2026
+      {/* FOOTER TERM */}
+      <footer className="py-12 border-t border-white/5 text-center text-[8px] font-mono opacity-20 tracking-[1em] text-white bg-black relative z-10">
+        CANTO_DO_TXANA_X_SHANENAWA_2026
       </footer>
-
     </main>
   );
 }
