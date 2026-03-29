@@ -7,6 +7,10 @@
   --star-white: rgba(255, 255, 255, 0.9);
   --emerald-metal: #004d40; /* Verde Esmeralda Metalizado */
   --deep-black: #050505; /* O vazio absoluto */
+  
+  /* Coordenadas do mouse que serão atualizadas via JS */
+  --mouse-x: 50%;
+  --mouse-y: 50%;
 }
 
 html, body {
@@ -16,35 +20,30 @@ html, body {
   scroll-behavior: smooth;
   background-color: var(--deep-black); /* Começa no preto total */
   color: #ffffff;
-  font-family: 'JetBrains Mono', monospace; /* Fonte Hacker para a história */
+  font-family: 'serif'; /* Fonte clássica para o Black Old */
+  cursor: none; /* Esconde o cursor padrão para a experiência pura */
 }
 
-/* --- O CÉU PROFUNDO DE POEIRA CÓSMICA (SHOW DE CÉU) --- */
-.cosmic-dust-full {
-  background-color: var(--deep-black);
+/* --- O CÉU PROFUNDO DE PARTÍCULAS (CÉU DO UNIVERSO) --- */
+.cosmic-void {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  background-color: var(--deep-black);
   z-index: 0;
+  overflow: hidden;
 }
 
-/* Gerador de micro-estrelas e poeira com box-shadow (Alta performance) */
+/* Gerador de micro-estrelas com box-shadow (Leve e Brilhante) */
 .dust-point {
   width: 1.5px;
   height: 1.5px;
   background: var(--star-white);
   border-radius: 50%;
-  /* Centenas de pontos de luz piscantes em profundidades diferentes */
   box-shadow: 
     100px 100px var(--neon-cyan), 300px 200px var(--star-white), 500px 150px var(--neon-cyan),
-    700px 300px var(--star-white), 900px 100px var(--neon-cyan), 200px 400px var(--star-white),
-    /*...posições... */
-    12vw 18vh var(--star-white), 32vw 8vh var(--star-white), 52vw 28vh var(--star-white),
-    72vw 12vh var(--star-white), 92vw 22vh var(--star-white);
-  
-  /* A Animação do brilho piscar */
+    700px 300px var(--star-white), 900px 100px var(--neon-cyan), 200px 400px var(--star-white);
   animation: starsBlinkSlow 8s infinite ease-in-out;
 }
 
@@ -54,74 +53,59 @@ html, body {
 }
 
 /* --- ÚNICA ESTRELA CADENTE HORIZONTAL --- */
-.single-horizontal-shooting-star {
+.lone-cadente {
   position: absolute;
-  top: 30%; /* Posição horizontal no céu */
+  top: 25%;
   left: -300px;
-  width: 200px;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #ffffff, transparent);
-  border-radius: 999px;
-  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
-  animation: shootingStarHorizontal 12s infinite ease-in-out;
-  animation-delay: 1s; /* Raro, aparece a cada 10s */
+  width: 150px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #fff, transparent);
+  animation: slideAcross 15s infinite linear;
   z-index: 1;
 }
 
-@keyframes shootingStarHorizontal {
-  0% { transform: translateX(0); opacity: 0; }
-  10% { opacity: 1; }
-  30% { transform: translateX(calc(100vw + 300px)); opacity: 0; }
-  100% { transform: translateX(calc(100vw + 300px)); opacity: 0; }
+@keyframes slideAcross {
+  0% { left: -300px; opacity: 0; }
+  5% { opacity: 1; }
+  20% { left: 120vw; opacity: 0; }
+  100% { left: 120vw; opacity: 0; }
 }
 
-/* --- CANTO DO TXÁNA (GIGANTE - METAL METALIZADO VIDRO ESMERALDA) --- */
-.txana-brand-gigante {
-  font-family: 'serif'; /* Algo mais clássico e ancestral */
-  font-weight: 100; /* Extra fina */
-  text-transform: uppercase;
-  color: #ffffff;
-  
-  /* O ESPAÇAMENTO "CHIQUE" */
-  letter-spacing: 0.6em; 
-  
-  /* O BRILHO (AURA BRANCA ETÉREA) */
-  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.6));
-  
-  /* Gradiente místico adaptativo (Branco puro -> Metal Líquido -> Esmeralda) */
-  background: linear-gradient(-45deg, #ffffff, #aab4b0, var(--emerald-metal), #aab4b0, #ffffff);
-  background-size: 400% 400%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: metalFlow 8s ease infinite;
-}
-
-@keyframes metalFlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* --- A MARCA QUE CONTA HISTÓRIA (SUBTÍTULO - GIGANTE) --- */
-.sub-homenagem-gigante {
-  font-family: 'monospace'; /* Equilíbrio digital */
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.6); /* Maior opacidade para leitura */
-  
-  /* O ESPAÇAMENTO "CHIQUE" */
-  letter-spacing: 1.2em;
-  
-  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
-}
-
-/* --- MOLDURA DE CÂMERA DE CINEMA (GLASS MORPHISM) --- */
-.camera-focus-frame {
+/* --- A MÁSCARA MÁGICA: AFASTANDO AS TREVAS --- */
+.darkness-mask {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none; /* Não atrapalha o click */
-  border: 1px solid rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(1px); /* Efeito de lente */
-  z-index: 2;
+  z-index: 1; /* Fica sobre o céu, mas sob o texto */
+  
+  /* Gradiente radial que segue o mouse. O centro é transparente, as bordas são pretas */
+  background: radial-gradient(
+    circle at var(--mouse-x) var(--mouse-y), 
+    transparent 10%, 
+    var(--emerald-metal) 30%, 
+    var(--deep-black) 60%
+  );
+  
+  /* Efeito de Vidro para maior proteção visual */
+  backdrop-filter: blur(1px); 
+  mix-blend-mode: hard-light; /* Faz o metal esmeralda interagir com o fundo */
+}
+
+/* --- CANTO DO TXÁNA (METALIZADO ESMERALDA - MASSIVO) --- */
+.txana-emerald-metal {
+  font-family: 'serif';
+  text-transform: uppercase;
+  letter-spacing: 0.6em; 
+  filter: drop-shadow(0 0 20px rgba(0, 242, 255, 0.5)); /* Aura Neon */
+  
+  background: linear-gradient(135deg, #e0e0e0 0%, var(--emerald-metal) 45%, #ffffff 50%, var(--emerald-metal) 55%, #e0e0e0 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 8s linear infinite;
+}
+
+@keyframes shine {
+  to { background-position: 200% center; }
 }
